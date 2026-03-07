@@ -1,0 +1,159 @@
+---
+const awards = [
+  {
+    title: 'Reconocimiento Laboral Destacado',
+    org: 'Compartiendo por la Salud Mental',
+    year: '2023',
+    desc: 'Segundo reconocimiento consecutivo por liderazgo y compromiso con la salud mental comunitaria en Cajamarca.',
+  },
+  {
+    title: 'Reconocimiento Laboral Destacado',
+    org: 'Compartiendo por la Salud Mental',
+    year: '2022',
+    desc: 'Reconocimiento por contribución excepcional al desarrollo de programas de salud mental comunitaria.',
+  },
+];
+
+const talks = [
+  {
+    title: 'Seminario de Actualización Clínica',
+    event: '"Optimizando la práctica clínica: Estrategias de Abordaje Psicoterapéutico"',
+    where: 'Cajamarca',
+    year: '2024',
+    role: 'Ponente',
+  },
+  {
+    title: 'I Congreso de Salud y II Encuentro de Salud',
+    event: 'Magdalena de Mar',
+    where: 'Lima',
+    year: '2023',
+    role: 'Ponente',
+  },
+];
+---
+<section id="logros" class="achievements">
+  <div class="container">
+    <p class="section-subtitle" data-i18n="achievements.subtitle">Reconocimientos y logros</p>
+    <h2 class="section-title" data-i18n="achievements.title">Logros</h2>
+
+    <div class="ach-grid">
+      <!-- Reconocimientos -->
+      <div class="ach-col">
+        <h3 class="ach-category" data-i18n="achievements.awards">Reconocimientos</h3>
+        {awards.map((a, i) => (
+          <div class="ach-card award">
+            <div class="ach-header">
+              <span class="ach-year">{a.year}</span>
+              <span class="ach-org">{a.org}</span>
+            </div>
+            <h4 data-i18n={`achievements.awards.${i}.title`}>{a.title}</h4>
+            <p data-i18n={`achievements.awards.${i}.desc`}>{a.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Ponencias -->
+      <div class="ach-col">
+        <h3 class="ach-category" data-i18n="achievements.talks">Ponencias</h3>
+        {talks.map((t, i) => (
+          <div class="ach-card talk">
+            <div class="ach-header">
+              <span class="ach-year ach-year-talk">{t.year}</span>
+              <span class="ach-org" data-i18n={`achievements.talks.${i}.role`}>{t.role}</span>
+            </div>
+            <h4 data-i18n={`achievements.talks.${i}.title`}>{t.title}</h4>
+            <p data-i18n={`achievements.talks.${i}.event`}>{t.event}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .achievements {
+    padding: var(--section-pad-v) 0;
+    background: var(--color-bg-alt);
+  }
+
+  .achievements .section-title {
+    margin-bottom: var(--space-12);
+  }
+
+  .ach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  .ach-category {
+    font-size: var(--text-lg);
+    color: var(--color-primary);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--color-border);
+    font-family: var(--font-heading);
+  }
+
+  .ach-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    margin-bottom: var(--space-4);
+    box-shadow: var(--shadow-card);
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .ach-card.talk {
+    border-left-color: var(--color-accent);
+  }
+
+  .ach-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .ach-year {
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 99px;
+    white-space: nowrap;
+    font-family: var(--font-body);
+  }
+
+  .ach-year-talk {
+    background: var(--color-accent);
+  }
+
+  .ach-org {
+    font-size: var(--text-xs);
+    opacity: 0.6;
+    font-style: italic;
+  }
+
+  .ach-card h4 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-2);
+  }
+
+  .ach-card p {
+    font-size: var(--text-sm);
+    opacity: 0.75;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .ach-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .ach-card { padding: var(--space-4); }
+    .ach-category { font-size: var(--text-base); }
+  }
+</style>

@@ -1,0 +1,197 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+<header>
+  <nav class="container">
+    <a href={`${base}#inicio`} class="logo">Sandra Hoyos</a>
+    <ul class="nav-links">
+      <li><a href="#sobre-mi"    data-i18n="nav.about">Sobre mí</a></li>
+      <li><a href="#servicios"   data-i18n="nav.services">Especialidades</a></li>
+      <li><a href="#experiencia" data-i18n="nav.experience">Experiencia</a></li>
+      <li><a href="#formacion"   data-i18n="nav.education">Formación</a></li>
+      <li><a href="#logros"      data-i18n="nav.achievements">Logros</a></li>
+      <li><a href="#contacto" class="btn btn-primary nav-cta" data-i18n="nav.contact">Contacto</a></li>
+    </ul>
+    <div class="header-actions">
+      <button id="lang-toggle" class="lang-btn" onclick="window.setLang && window.setLang(document.documentElement.lang === 'es' ? 'en' : 'es')" aria-label="Cambiar idioma">EN</button>
+      <!-- Mobile menu toggle -->
+      <button class="menu-toggle" data-i18n-aria="nav.menu.open" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="#sobre-mi"    data-i18n="nav.about">Sobre mí</a></li>
+      <li><a href="#servicios"   data-i18n="nav.services">Especialidades</a></li>
+      <li><a href="#experiencia" data-i18n="nav.experience">Experiencia</a></li>
+      <li><a href="#formacion"   data-i18n="nav.education">Formación</a></li>
+      <li><a href="#logros"      data-i18n="nav.achievements">Logros</a></li>
+      <li><a href="#contacto" class="btn btn-primary" data-i18n="nav.contact">Contacto</a></li>
+    </ul>
+    <div class="mobile-lang">
+      <button class="lang-btn lang-btn-mobile" onclick="window.setLang && window.setLang(document.documentElement.lang === 'es' ? 'en' : 'es')" aria-label="Cambiar idioma">EN</button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle') as HTMLButtonElement;
+  const mobileNav = document.getElementById('mobile-nav');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = mobileNav?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  mobileNav?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26, 23, 20, 0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+  }
+
+  .logo {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: bold;
+    color: var(--color-text);
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    transition: var(--transition);
+  }
+  .nav-links a:not(.btn):hover { color: var(--color-primary); }
+
+  .nav-cta {
+    padding: var(--space-2) var(--space-6) !important;
+    font-size: var(--text-sm) !important;
+  }
+
+  /* Header actions: lang toggle + hamburger */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  /* Language toggle */
+  .lang-btn {
+    background: transparent;
+    border: 2px solid var(--color-border);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    line-height: 1.4;
+    min-width: 52px;
+  }
+  .lang-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  /* Hamburger */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+  }
+  .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition: var(--transition);
+  }
+
+  /* Mobile nav */
+  .mobile-nav {
+    display: none;
+    padding: var(--space-6) var(--space-6) var(--space-4);
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+  }
+  .mobile-nav.open { display: block; }
+  .mobile-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+  .mobile-nav a {
+    font-size: var(--text-base);
+    font-weight: 500;
+    display: block;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+  }
+  .mobile-nav a:not(.btn):hover {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-border);
+  }
+  .mobile-nav .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: var(--space-2);
+  }
+
+  /* Lang toggle in mobile nav */
+  .mobile-lang {
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+  }
+  .lang-btn-mobile {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Hide desktop lang btn on mobile — it's in the header-actions already */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: flex; }
+  }
+</style>

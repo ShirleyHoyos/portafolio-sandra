@@ -1,0 +1,144 @@
+---
+const stats = [
+  { value: '5+',  label: 'años de experiencia',       color: 'primary' },
+  { value: '3',   label: 'enfoques terapéuticos',     color: 'accent'  },
+  { value: '2',   label: 'reconocimientos laborales', color: 'primary' },
+  { value: '2',   label: 'ponencias en congresos',    color: 'accent'  },
+];
+---
+<section id="sobre-mi" class="about">
+  <div class="container">
+    <div class="about-header">
+      <p class="section-subtitle" data-i18n="about.subtitle">Sobre mí</p>
+      <h2 class="section-title" data-i18n="about.title">Psicología con calidez y evidencia</h2>
+    </div>
+
+    <div class="about-body">
+      <div class="about-text">
+        <p data-i18n="about.p1">
+          Soy Sandra Hoyos, psicóloga clínica y organizacional con más de 5 años
+          de experiencia acompañando a personas en sus procesos de cambio y
+          bienestar emocional. Mi práctica integra la <strong>Terapia
+          Cognitivo-Conductual (TCC)</strong>, la terapia interpersonal y la
+          terapia de pareja.
+        </p>
+        <p data-i18n="about.p2">
+          Actualmente curso la <strong>Maestría en Psicología Clínica</strong> en
+          la Universidad Peruana Cayetano Heredia (UPCH), manteniéndome al día
+          con los avances más recientes en investigación clínica.
+        </p>
+        <p data-i18n="about.p3">
+          He trabajado en contextos clínicos, educativos, comunitarios y
+          organizacionales, en Lima y Cajamarca. Mi enfoque es colaborativo,
+          humano y orientado a resultados concretos.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        {stats.map((s, i) => (
+          <div class={`stat-card stat-${s.color}`}>
+            <span class="stat-value">{s.value}</span>
+            <span class="stat-label" data-i18n={`about.stats.${i}`}>{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: var(--section-pad-v) 0;
+    background: var(--color-bg-alt);
+  }
+
+  /* Encabezado centrado */
+  .about-header {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto var(--space-12);
+  }
+
+  .about-header .section-title {
+    font-size: var(--text-3xl);
+  }
+
+  /* Cuerpo en dos columnas */
+  .about-body {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .about-text p {
+    margin-bottom: var(--space-4);
+    line-height: 1.85;
+    opacity: 0.9;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* Stats */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+
+  .stat-card {
+    border-radius: var(--radius-lg);
+    padding: var(--space-6) var(--space-4);
+    text-align: center;
+    transition: var(--transition);
+  }
+
+  .stat-card:hover { transform: translateY(-3px); }
+
+  .stat-primary {
+    background: linear-gradient(145deg, rgba(124,154,126,0.18) 0%, rgba(124,154,126,0.04) 100%);
+  }
+
+  .stat-accent {
+    background: linear-gradient(145deg, rgba(212,120,90,0.18) 0%, rgba(212,120,90,0.04) 100%);
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: var(--space-2);
+  }
+
+  .stat-primary .stat-value { color: var(--color-primary); }
+  .stat-accent  .stat-value { color: var(--color-accent); }
+
+  .stat-label {
+    font-size: var(--text-xs);
+    color: var(--color-text);
+    opacity: 0.65;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 860px) {
+    .about-body { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat-card { padding: var(--space-4) var(--space-3); }
+    .stat-value { font-size: var(--text-3xl); }
+  }
+
+  @media (max-width: 480px) {
+    .about-header { margin-bottom: var(--space-8); }
+    .about-body { gap: var(--space-8); }
+  }
+</style>

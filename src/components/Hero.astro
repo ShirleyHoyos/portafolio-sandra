@@ -1,0 +1,236 @@
+---
+---
+<section id="inicio" class="hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="pre-heading">C.P.PS. 44938</p>
+      <h1>Sandra Hoyos<br/><em>Cruzado</em></h1>
+      <p class="title-badge">Psicóloga Clínica y Organizacional</p>
+      <p class="tagline" data-i18n="hero.tagline">
+        Acompañamiento psicológico basado en evidencia para tu bienestar
+        emocional, relacional y profesional.
+      </p>
+      <div class="cta-group">
+        <a href="#contacto" class="btn btn-primary" data-i18n="hero.cta1">Contáctame</a>
+        <a href="#experiencia" class="btn btn-outline" data-i18n="hero.cta2">Ver trayectoria</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img src="/portafolio-sandra/sandra.jpg" alt="Sandra Hoyos Cruzado — Psicóloga" class="hero-photo" />
+      <div class="photo-bg-circle" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--color-bg) 60%, var(--color-bg-alt) 100%);
+  }
+
+  #hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-16);
+    align-items: center;
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero-text {
+    max-width: 560px;
+  }
+
+  /* Foto */
+  .hero-photo-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .hero-photo {
+    width: 340px;
+    height: 420px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radius-lg);
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 16px 48px rgba(61, 53, 48, 0.15);
+  }
+
+  .photo-bg-circle {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    opacity: 0.12;
+    bottom: -40px;
+    right: -30px;
+    z-index: 0;
+  }
+
+  .pre-heading {
+    color: var(--color-accent);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+    font-family: var(--font-body);
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: var(--space-6);
+    color: var(--color-text);
+    line-height: 1.1;
+  }
+
+  h1 em {
+    color: var(--color-primary);
+    font-style: italic;
+  }
+
+  .title-badge {
+    display: inline-block;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--space-1) var(--space-6);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    margin-bottom: var(--space-8);
+    font-family: var(--font-body);
+  }
+
+  .tagline {
+    font-size: var(--text-lg);
+    color: var(--color-text);
+    opacity: 0.8;
+    max-width: 520px;
+    margin-bottom: var(--space-8);
+    line-height: 1.8;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: var(--space-8);
+      padding-top: var(--space-12);
+      padding-bottom: var(--space-12);
+    }
+    .hero-text { max-width: 100%; }
+
+    /* Foto circular centrada encima del texto */
+    .hero-photo-wrap {
+      display: flex;
+      justify-content: center;
+      order: -1;
+    }
+    .hero-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-position: top center;
+      box-shadow: 0 0 0 4px rgba(124, 154, 126, 0.25), 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .photo-bg-circle { display: none; }
+
+    .cta-group { justify-content: center; }
+    h1 { font-size: clamp(2rem, 8vw, 3rem); }
+    .tagline { font-size: var(--text-base); max-width: 100%; }
+    .pre-heading { margin-bottom: var(--space-2); }
+  }
+
+  @media (max-width: 480px) {
+    .hero-photo { width: 120px; height: 120px; }
+    h1 { font-size: clamp(1.8rem, 9vw, 2.5rem); }
+    .cta-group { flex-direction: column; align-items: center; }
+    .cta-group .btn { width: 100%; max-width: 280px; text-align: center; }
+  }
+</style>
+
+<script is:inline>
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+
+  var COLORS = [
+    [124, 154, 126],  // verde salvia
+    [212, 120,  90],  // terracota
+  ];
+
+  var particles = [];
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+
+  function createParticle() {
+    var c = COLORS[Math.floor(Math.random() * COLORS.length)];
+    return {
+      x:     rand(0, canvas.width),
+      y:     rand(0, canvas.height),
+      r:     rand(2, 5),
+      vx:    rand(-0.45, 0.45),
+      vy:    rand(-0.45, 0.45),
+      alpha: rand(0.30, 0.65),
+      c:     c,
+    };
+  }
+
+  var count = Math.min(90, Math.floor((window.innerWidth * window.innerHeight) / 9000));
+  for (var i = 0; i < count; i++) particles.push(createParticle());
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < -5)              p.x = canvas.width  + 5;
+      if (p.x > canvas.width  + 5) p.x = -5;
+      if (p.y < -5)              p.y = canvas.height + 5;
+      if (p.y > canvas.height + 5) p.y = -5;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + p.c[0] + ',' + p.c[1] + ',' + p.c[2] + ',' + p.alpha + ')';
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+</script>

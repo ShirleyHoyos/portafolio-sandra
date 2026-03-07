@@ -1,0 +1,191 @@
+---
+const degrees = [
+  {
+    title: 'Maestría en Psicología Clínica',
+    institution: 'Universidad Peruana Cayetano Heredia (UPCH)',
+    location: 'Lima, Perú',
+    period: 'En curso',
+    tag: 'Posgrado',
+  },
+  {
+    title: 'Licenciada en Psicología',
+    institution: 'Universidad Privada del Norte (UPN)',
+    location: 'Cajamarca, Perú',
+    period: '2015 – 2020',
+    tag: 'Pregrado',
+  },
+];
+
+const specializations = [
+  { title: 'Especialización en Terapia Cognitivo-Conductual (TCC)', year: '2024' },
+  { title: 'Diplomado en Psicología Organizacional — Univ. San Luis Gonzaga', year: '2023' },
+  { title: 'Diplomado en Habilidades Blandas para Gestión de Personal — USLG', year: '2023' },
+  { title: 'Diplomado de Especialización en Recursos Humanos y Ley SERVIR — APOLO', year: '2020' },
+  { title: 'Diplomado en Gestión Pública — APOLO', year: '2020' },
+];
+
+const courses = [
+  { title: 'Comunicación Efectiva en Salud y Orientación al Cliente — IESTP', year: '2025' },
+  { title: 'Fundamentos del Cuidado Paliativo — Campus Virtual de la Salud Pública', year: '2024' },
+  { title: 'Alta Especialización: Depresión y Ansiedad bajo el enfoque TCC — GIZAM', year: '2023' },
+  { title: 'Terapia Racional Emotiva Conductual en Trastornos Emocionales — ILEPE', year: '2023' },
+  { title: 'Terapia de Pareja — Instituto de Psicología Integral Riqchariy', year: '2023' },
+  { title: 'Prevención e Intervención en Abuso Sexual Infantil — GIZAM', year: '2023' },
+];
+---
+<section id="formacion" class="education">
+  <div class="container">
+    <p class="section-subtitle" data-i18n="education.subtitle">Formación académica</p>
+    <h2 class="section-title" data-i18n="education.title">Educación</h2>
+
+    <div class="edu-layout">
+      <!-- Columna izquierda: Títulos + Especializaciones -->
+      <div class="edu-left">
+        <h3 class="edu-category" data-i18n="education.degrees">Títulos académicos</h3>
+        <div class="degree-list">
+          {degrees.map((d, i) => (
+            <div class="degree-card">
+              <span class="degree-tag" data-i18n={`education.degree.${i}.tag`}>{d.tag}</span>
+              <h4>{d.title}</h4>
+              <p class="degree-inst">{d.institution} · {d.location}</p>
+              <p class="degree-period" data-i18n={`education.degree.${i}.period`}>{d.period}</p>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="edu-category" data-i18n="education.specs">Especializaciones</h3>
+        <ul class="cert-list">
+          {specializations.map(s => (
+            <li class="cert-item">
+              <span class="cert-year">{s.year}</span>
+              <span class="cert-title">{s.title}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Columna derecha: Cursos -->
+      <div class="edu-right">
+        <h3 class="edu-category" data-i18n="education.courses">Formación complementaria</h3>
+        <ul class="cert-list">
+          {courses.map(c => (
+            <li class="cert-item">
+              <span class="cert-year">{c.year}</span>
+              <span class="cert-title">{c.title}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .education {
+    padding: var(--section-pad-v) 0;
+  }
+
+  .education .section-title {
+    margin-bottom: var(--space-12);
+  }
+
+  .edu-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  .edu-category {
+    font-size: var(--text-lg);
+    color: var(--color-primary);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--color-border);
+    font-family: var(--font-heading);
+  }
+
+  /* Degree cards */
+  .degree-list {
+    margin-bottom: var(--space-12);
+  }
+
+  .degree-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    margin-bottom: var(--space-4);
+    box-shadow: var(--shadow-card);
+  }
+
+  .degree-tag {
+    display: inline-block;
+    font-size: var(--text-xs);
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 2px 10px;
+    border-radius: 99px;
+    margin-bottom: var(--space-2);
+    font-family: var(--font-body);
+  }
+
+  .degree-card h4 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-1);
+  }
+
+  .degree-inst {
+    font-size: var(--text-sm);
+    opacity: 0.7;
+    margin-bottom: var(--space-1);
+  }
+
+  .degree-period {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  /* Cert list */
+  .cert-list {
+    list-style: none;
+    margin-bottom: var(--space-4);
+  }
+
+  .cert-item {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cert-item:last-child {
+    border-bottom: none;
+  }
+
+  .cert-year {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    font-weight: 700;
+    white-space: nowrap;
+    padding-top: 3px;
+    min-width: 36px;
+    font-family: var(--font-body);
+  }
+
+  .cert-title {
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .edu-layout { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .degree-card { padding: var(--space-4); }
+    .edu-category { font-size: var(--text-base); }
+    .cert-item { gap: var(--space-3); }
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+import { translations } from '../i18n/translations';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Sandra Hoyos Cruzado | Psicóloga Clínica y Organizacional',
+  description = 'Psicóloga Clínica y Organizacional con 5 años de experiencia. Especialista en TCC, terapia de pareja e intervención clínica. C.P.PS. 44938 — Lima, Perú.'
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Sandra Shirley Hoyos Cruzado" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <title>{title}</title>
+    <!-- i18n: apply saved language before first paint to avoid flash -->
+    <script is:inline define:vars={{ translations }}>
+      (function () {
+        var STORAGE_KEY = 'lang';
+        var DEFAULT_LANG = 'es';
+
+        function applyLang(lang) {
+          var t = translations[lang] || translations[DEFAULT_LANG];
+          document.documentElement.lang = lang;
+
+          document.querySelectorAll('[data-i18n]').forEach(function (el) {
+            var key = el.getAttribute('data-i18n');
+            if (t[key] !== undefined) el.innerHTML = t[key];
+          });
+
+          document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+            var key = el.getAttribute('data-i18n-placeholder');
+            if (t[key] !== undefined) el.setAttribute('placeholder', t[key]);
+          });
+
+          document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+            var key = el.getAttribute('data-i18n-aria');
+            if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
+          });
+
+          var label = lang === 'es' ? 'EN' : 'ES';
+          document.querySelectorAll('.lang-btn').forEach(function (btn) {
+            btn.textContent = label;
+          });
+
+          try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+        }
+
+        window.setLang = function (lang) { applyLang(lang); };
+
+        var saved;
+        try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+        var lang = saved || DEFAULT_LANG;
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function () { applyLang(lang); });
+        } else {
+          applyLang(lang);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

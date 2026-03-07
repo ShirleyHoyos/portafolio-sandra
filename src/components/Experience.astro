@@ -1,0 +1,174 @@
+---
+const experiences = [
+  {
+    period: 'Mayo 2025 – Presente',
+    role: 'Psicóloga Clínica / Coordinadora del Área',
+    institution: 'Centro de Padres a Hijos',
+    location: 'Lima, Perú',
+    desc: 'Liderazgo del equipo de psicólogos, coordinación de programas de intervención familiar y gestión de alianzas estratégicas.',
+    current: true,
+  },
+  {
+    period: 'Mayo – Julio 2025',
+    role: 'Psicóloga Clínica',
+    institution: 'Mediprefem',
+    location: 'Lima, Perú',
+    desc: 'Evaluaciones diagnósticas, intervenciones psicoterapéuticas y consejería especializada a estudiantes y familias.',
+    current: false,
+  },
+  {
+    period: 'Febrero 2022 – Febrero 2025',
+    role: 'Psicóloga Clínica / Coordinadora General',
+    institution: 'Compartiendo por la Salud Mental',
+    location: 'Cajamarca, Perú',
+    desc: 'Coordinación general de la organización, diagnóstico clínico, supervisión de practicantes y diseño de programas de intervención comunitaria. Reconocimiento laboral destacado en 2022 y 2023.',
+    current: false,
+  },
+  {
+    period: 'Marzo – Noviembre 2024',
+    role: 'Psicóloga Clínica',
+    institution: 'I.E. Jesús Trabajador',
+    location: 'Cajamarca, Perú',
+    desc: 'Evaluación e intervención psicológica, psicoterapia individual y familiar, y visitas domiciliarias a familias vulnerables.',
+    current: false,
+  },
+  {
+    period: 'Enero – Noviembre 2023',
+    role: 'Psicóloga Clínica',
+    institution: 'Centro Cecagisam',
+    location: 'Modalidad Remota',
+    desc: 'Acompañamiento psicosocial individual, familiar y comunitario en modalidad virtual.',
+    current: false,
+  },
+  {
+    period: 'Octubre 2022 – Septiembre 2023',
+    role: 'Psicóloga SERUMS',
+    institution: 'Centro de Salud Cauday',
+    location: 'Cajabamba, Perú',
+    desc: 'Servicio rural de salud pública: diagnóstico, tratamiento, talleres comunitarios, informes periciales y proyectos de intervención en salud mental.',
+    current: false,
+  },
+  {
+    period: 'Marzo 2020 – Noviembre 2021',
+    role: 'Psicóloga',
+    institution: 'I.E.P. Sagrada Familia',
+    location: 'Cajamarca, Perú',
+    desc: 'Evaluación e intervención educativa, escuela de padres, talleres para docentes y orientación psicológica a familias.',
+    current: false,
+  },
+];
+---
+<section id="experiencia" class="experience">
+  <div class="container">
+    <p class="section-subtitle" data-i18n="experience.subtitle">Trayectoria profesional</p>
+    <h2 class="section-title" data-i18n="experience.title">Experiencia</h2>
+    <div class="timeline">
+      {experiences.map((exp, i) => (
+        <div class={`timeline-item${exp.current ? ' current' : ''}`}>
+          <div class="timeline-marker" />
+          <div class="timeline-content">
+            <span class="timeline-period" data-i18n={`experience.${i}.period`}>{exp.period}</span>
+            <h3 class="timeline-role" data-i18n={`experience.${i}.role`}>{exp.role}</h3>
+            <p class="timeline-institution">
+              {exp.institution} &middot; {exp.location}
+            </p>
+            <p class="timeline-desc" data-i18n={`experience.${i}.desc`}>{exp.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience {
+    padding: var(--section-pad-v) 0;
+    background: var(--color-bg-alt);
+  }
+
+  .experience .section-title {
+    margin-bottom: var(--space-12);
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: var(--space-8);
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: var(--space-12);
+  }
+
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: calc(-1 * var(--space-8) - 5px);
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-border);
+    border: 2px solid var(--color-bg-alt);
+    transition: var(--transition);
+  }
+
+  .timeline-item.current .timeline-marker {
+    background: var(--color-primary);
+    width: 16px;
+    height: 16px;
+    left: calc(-1 * var(--space-8) - 7px);
+    top: 4px;
+    box-shadow: 0 0 0 4px rgba(124, 154, 126, 0.2);
+  }
+
+  .timeline-period {
+    display: block;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+  }
+
+  .timeline-role {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-1);
+  }
+
+  .timeline-institution {
+    font-size: var(--text-sm);
+    color: var(--color-primary);
+    font-weight: 500;
+    margin-bottom: var(--space-2);
+  }
+
+  .timeline-desc {
+    font-size: var(--text-sm);
+    opacity: 0.75;
+    line-height: 1.7;
+    max-width: 680px;
+  }
+
+  @media (max-width: 600px) {
+    .timeline { padding-left: var(--space-6); }
+    .timeline-item { padding-bottom: var(--space-8); }
+    .timeline-marker { left: calc(-1 * var(--space-6) - 5px); }
+    .timeline-item.current .timeline-marker { left: calc(-1 * var(--space-6) - 7px); }
+    .timeline-role { font-size: var(--text-lg); }
+  }
+</style>

@@ -1,0 +1,156 @@
+/* === DESIGN TOKENS === */
+:root {
+  /* Colors — Carbón cálido y terracota */
+  --color-primary:       #7C9A7E;   /* verde salvia */
+  --color-primary-light: #5E7D60;   /* verde salvia oscuro */
+  --color-bg:            #1A1714;   /* carbón cálido */
+  --color-bg-alt:        #221E1A;   /* carbón oscuro */
+  --color-surface:       #2E2823;   /* superficies / tarjetas */
+  --color-accent:        #D4785A;   /* terracota intenso */
+  --color-text:          #F0EBE3;   /* crema claro */
+  --color-white:         #FFFFFF;
+  --color-border:        #3D3530;
+
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    Inter, system-ui, -apple-system, sans-serif;
+
+  /* Font sizes */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+  --text-5xl:  3rem;
+
+  /* Spacing */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* Layout */
+  --max-width:      1100px;
+  --section-pad-v:  var(--space-24);
+
+  /* Effects */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --shadow-card: 0 2px 20px rgba(0, 0, 0, 0.35);
+  --transition:  all 0.25s ease;
+}
+
+/* === RESET === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a  { color: inherit; text-decoration: none; }
+
+/* === TYPOGRAPHY === */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+/* === UTILITIES === */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+}
+
+.section-subtitle {
+  color: var(--color-primary);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+  font-family: var(--font-body);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  line-height: 1.5;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-text);
+}
+.btn-outline:hover {
+  background: var(--color-text);
+  color: var(--color-white);
+}
+
+/* === RESPONSIVE BASICS === */
+@media (max-width: 768px) {
+  :root {
+    --section-pad-v: var(--space-16);
+  }
+  .section-title { font-size: var(--text-2xl); }
+  .container { padding: 0 var(--space-4); }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-pad-v: var(--space-12);
+    --space-12: 2.5rem;
+  }
+  .section-title { font-size: var(--text-xl); }
+  .section-subtitle { font-size: 0.7rem; }
+  .btn { padding: var(--space-3) var(--space-6); font-size: var(--text-sm); }
+}
