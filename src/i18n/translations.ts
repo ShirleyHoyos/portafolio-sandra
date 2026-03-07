@@ -95,7 +95,7 @@ export const translations = {
     // Contact
     'contact.subtitle':                   'Estoy aquí para ayudarte',
     'contact.title':                      'Contacto',
-    'contact.intro':                      '¿Tienes preguntas o deseas agendar una consulta? Escríbeme directamente o completa el formulario y te responderé a la brevedad.',
+    'contact.intro':                      '¿Tienes preguntas o deseas agendar una consulta? Escríbeme directamente y te responderé a la brevedad.',
     'contact.email.label':                'Correo electrónico',
     'contact.phone.label':                'Teléfono / WhatsApp',
     'contact.confidentiality':            'Toda la información compartida es tratada con estricta confidencialidad.',
@@ -217,7 +217,7 @@ export const translations = {
     // Contact
     'contact.subtitle':                   "I'm here to help",
     'contact.title':                      'Contact',
-    'contact.intro':                      'Do you have questions or would you like to schedule a consultation? Write to me directly or fill out the form and I will get back to you shortly.',
+    'contact.intro':                      'Do you have questions or would like to schedule a consultation? Write to me directly and I will get back to you shortly.',
     'contact.email.label':                'Email',
     'contact.phone.label':                'Phone / WhatsApp',
     'contact.confidentiality':            'All information shared is treated with strict confidentiality.',
