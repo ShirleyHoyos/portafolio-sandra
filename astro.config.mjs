@@ -6,7 +6,7 @@ import { defineConfig } from 'astro/config';
 // - base: nombre exacto del repositorio en GitHub (ej: '/portafolio-sandra')
 
 export default defineConfig({
-  site: 'https://ElioRevilla.github.io',  // <- reemplaza TU_USUARIO
+  site: 'https://ShirleyHoyos.github.io',
   base: '/portafolio-sandra',
   output: 'static',
   build: {
