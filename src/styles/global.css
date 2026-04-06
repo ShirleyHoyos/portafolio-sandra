@@ -1,8 +1,8 @@
 /* === DESIGN TOKENS === */
 :root {
   /* Colors — Carbón cálido y terracota */
-  --color-primary:       #7C9A7E;   /* verde salvia */
-  --color-primary-light: #5E7D60;   /* verde salvia oscuro */
+  --color-primary:       #D4A0A0;   /* rosa palo */
+  --color-primary-light: #B88080;   /* rosa palo oscuro */
   --color-bg:            #1A1714;   /* carbón cálido */
   --color-bg-alt:        #221E1A;   /* carbón oscuro */
   --color-surface:       #2E2823;   /* superficies / tarjetas */
