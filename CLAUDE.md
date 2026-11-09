@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Portafolio web de Sandra Shirley Hoyos Cruzado — Psicóloga Clínica y Organizacional.
+Portafolio web de Shirley Hoyos Cruzado — Psicóloga Clínica y Organizacional.
 
 ## Comandos
 
@@ -34,7 +34,7 @@ Header → Hero → About → Services → Experience → Education → Achievem
 | `src/components/Hero.astro` | Sección principal con foto (sandra.jpg) a la derecha |
 | `src/components/Contact.astro` | Formulario Formspree — reemplazar `YOUR_FORM_ID` |
 | `astro.config.mjs` | `base: '/portafolio-sandra'` — actualizar `site` con usuario GitHub |
-| `public/sandra.jpg` | Foto de perfil de Sandra |
+| `public/sandra.jpg` | Foto de perfil de Shirley |
 | `public/.nojekyll` | Desactiva Jekyll en GitHub Pages (crítico) |
 | `.github/workflows/deploy.yml` | CI/CD — deploy automático al hacer push a `main` |
 
@@ -52,7 +52,7 @@ Header → Hero → About → Services → Experience → Education → Achievem
 
 ## Secciones del portafolio
 
-1. **Hero** — Nombre, C.P.PS. 44938, badge de título, tagline, foto de Sandra, 2 CTAs
+1. **Hero** — Nombre, C.P.PS. 44938, badge de título, tagline, foto de Shirley, 2 CTAs
 2. **Sobre mí** — Resumen profesional + 4 stat cards (5+ años, 3 enfoques, 2 reconocimientos, 2 ponencias)
 3. **Servicios** — 6 tarjetas: Terapia Individual, Terapia de Pareja, Evaluación Psicológica, Programas de Bienestar, Psicología Educativa, Psicología Organizacional
 4. **Experiencia** — Timeline vertical de 7 puestos (más reciente primero)
@@ -60,7 +60,7 @@ Header → Hero → About → Services → Experience → Education → Achievem
 6. **Logros** — 2 reconocimientos laborales + 2 ponencias en congresos
 7. **Contacto** — Info (email, WhatsApp, LinkedIn) + formulario Formspree con 6 campos
 
-## Datos de contacto de Sandra
+## Datos de contacto de Shirley
 
 - **Email:** shir.hc16@gmail.com
 - **Teléfono/WhatsApp:** (+51) 986625219
@@ -72,7 +72,7 @@ Header → Hero → About → Services → Experience → Education → Achievem
 1. **`astro.config.mjs`** — reemplazar `TU_USUARIO` con el usuario real de GitHub
 2. **`src/components/Contact.astro` línea 5** — reemplazar `YOUR_FORM_ID` con el ID de Formspree
    - Crear cuenta en formspree.io con shir.hc16@gmail.com
-   - Crear form "Consultas — Sandra Hoyos" y copiar el ID
+   - Crear form "Consultas — Shirley Hoyos" y copiar el ID
 3. Crear repositorio `portafolio-sandra` en GitHub
 4. Push a `main` → GitHub Actions despliega automáticamente
 5. Activar GitHub Pages: Settings > Pages > Source: **GitHub Actions**

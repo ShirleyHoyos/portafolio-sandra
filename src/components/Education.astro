@@ -46,7 +46,7 @@ const courses = [
           {degrees.map((d, i) => (
             <div class="degree-card">
               <span class="degree-tag" data-i18n={`education.degree.${i}.tag`}>{d.tag}</span>
-              <h4>{d.title}</h4>
+              <h4 data-i18n={`education.degree.${i}.title`}>{d.title}</h4>
               <p class="degree-inst">{d.institution} · {d.location}</p>
               <p class="degree-period" data-i18n={`education.degree.${i}.period`}>{d.period}</p>
             </div>
@@ -55,10 +55,10 @@ const courses = [
 
         <h3 class="edu-category" data-i18n="education.specs">Especializaciones</h3>
         <ul class="cert-list">
-          {specializations.map(s => (
+          {specializations.map((s, i) => (
             <li class="cert-item">
               <span class="cert-year">{s.year}</span>
-              <span class="cert-title">{s.title}</span>
+              <span class="cert-title" data-i18n={`education.specialization.${i}.title`}>{s.title}</span>
             </li>
           ))}
         </ul>
@@ -68,10 +68,10 @@ const courses = [
       <div class="edu-right">
         <h3 class="edu-category" data-i18n="education.courses">Formación complementaria</h3>
         <ul class="cert-list">
-          {courses.map(c => (
+          {courses.map((c, i) => (
             <li class="cert-item">
               <span class="cert-year">{c.year}</span>
-              <span class="cert-title">{c.title}</span>
+              <span class="cert-title" data-i18n={`education.course.${i}.title`}>{c.title}</span>
             </li>
           ))}
         </ul>
